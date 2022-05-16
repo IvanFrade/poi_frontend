@@ -14,14 +14,15 @@
         android:text="@string/title" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btn_activate_ticket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:text="@string/activate_ticket" />
 
     <Button
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onGetTicket"
         android:text="Button" />
 </LinearLayout>
