@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">poi_frontend</string>
+    <string name="title">POI app</string>
+</resources>
