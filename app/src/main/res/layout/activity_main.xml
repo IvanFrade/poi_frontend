@@ -17,6 +17,7 @@
         android:id="@+id/btn_activate_ticket"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="onActivateTicket"
         android:text="@string/activate_ticket" />
 
     <Button
