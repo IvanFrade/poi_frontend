@@ -43,6 +43,7 @@ public class MainActivity extends AppCompatActivity implements iListener {
         (new Thread(downloader)).start();
     }
 
+    //inutile
     public void onGetTicket(View v) {
         Downloader downloader = new Downloader(ticketCode);
         downloader.setListener(this);

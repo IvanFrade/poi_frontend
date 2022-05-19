@@ -21,6 +21,12 @@
         android:theme="@style/Theme.Poi_frontend"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MediaActivity"
+            android:exported="false" />
+        <activity
+            android:name=".NFCMedia"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -30,10 +36,10 @@
             </intent-filter>
         </activity>
         <activity
-        android:name="com.journeyapps.barcodescanner.CaptureActivity"
-        android:screenOrientation="portrait"
-        android:stateNotNeeded="true"
-        tools:replace="android:screenOrientation" />
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="portrait"
+            android:stateNotNeeded="true"
+            tools:replace="android:screenOrientation" />
     </application>
 
 </manifest>
