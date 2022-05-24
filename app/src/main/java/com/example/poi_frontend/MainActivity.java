@@ -15,6 +15,7 @@ import com.google.zxing.integration.android.IntentResult;
 public class MainActivity extends AppCompatActivity implements iListener {
 
     private String ticketCode;
+    private LoginResult loginResult;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +31,18 @@ public class MainActivity extends AppCompatActivity implements iListener {
         intentIntegrator.initiateScan();
     }
 
+    public void onNFCScan(View v) {
+        if (this.loginResult == null || !this.loginResult.getResult()) {
+            Toast.makeText(this, "Devi prima attivare un biglietto!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        Intent intent = new Intent(this, NFCMedia.class);
+        startActivity(intent);
+
+        //finish();
+    }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -43,22 +56,10 @@ public class MainActivity extends AppCompatActivity implements iListener {
         (new Thread(downloader)).start();
     }
 
-    //inutile
-    public void onGetTicket(View v) {
-        Downloader downloader = new Downloader(ticketCode);
-        downloader.setListener(this);
-
-        (new Thread(downloader)).start();
-    }
-
-    @Override
-    public void onTaskComplete(Boolean isValid) {
-        if (isValid) Toast.makeText(this, "biglietto valido", Toast.LENGTH_SHORT).show();
-        else Toast.makeText(this, "biglietto non valido", Toast.LENGTH_SHORT).show();
-    }
-
     @Override
     public void onTaskComplete(LoginResult loginResult) {
+        this.loginResult = loginResult;
+
         TextView view = ((TextView)findViewById(R.id.txt_title));
         if (loginResult.getResult())
             view.setText("Scade il " + loginResult.getExpiringTime());

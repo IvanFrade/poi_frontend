@@ -24,6 +24,6 @@
         android:id="@+id/button2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="onGetTicket"
-        android:text="Button" />
+        android:onClick="onNFCScan"
+        android:text="@string/scan_nfc" />
 </LinearLayout>
