@@ -21,6 +21,9 @@
         android:theme="@style/Theme.Poi_frontend"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ShowMedia"
+            android:exported="false" />
+        <activity
             android:name=".MediaActivity"
             android:exported="false" />
         <activity

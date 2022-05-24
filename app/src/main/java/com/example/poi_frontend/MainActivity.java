@@ -66,5 +66,28 @@ public class MainActivity extends AppCompatActivity implements iListener {
         else
             view.setText("Biglietto non valido");
     }
+
+    @Override
+    public void onTaskComplete(String poi) {
+
+        Intent intent = new Intent(this, MediaActivity.class);
+        intent.putExtra("poi", poi);
+
+        startActivity(intent);
+        finish();
+    }
+
+    public void onClick(View v) {
+        if (this.loginResult == null || !this.loginResult.getResult()) {
+            Toast.makeText(this, "Devi prima attivare un biglietto!", Toast.LENGTH_LONG).show();
+            return;
+        }
+
+        POIDownloader poiDownloader = new POIDownloader("0000000000000001");
+        poiDownloader.setListener(this);
+
+        (new Thread(poiDownloader)).start();
+    }
+
 }
 
