@@ -14,9 +14,9 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MediaActivity extends AppCompatActivity implements View.OnClickListener{
+public class MediaActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private String poitext;
+    private String poiText;
     private POI poi;
     private Media[] poiMedia;
 
@@ -25,15 +25,15 @@ public class MediaActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_media);
 
-        poitext = getIntent().getStringExtra("poi");
+        poiText = getIntent().getStringExtra("poi");
 
         try {
-            poi = new POI(new JSONObject(poitext));
+            poi = new POI(new JSONObject(poiText));
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        ((TextView)findViewById(R.id.txt_test)).setText(poi.getName());
+        ((TextView)findViewById(R.id.txt_poi_name)).setText(poi.getName());
 
         poiMedia = poi.getMedia();
 
@@ -46,16 +46,22 @@ public class MediaActivity extends AppCompatActivity implements View.OnClickList
             layout.addView(button);
         }
 
-        /*
-        apro activity e passo l'url
-        usand l'attributo tag della view
-        carico l'url nel tag del button
-         */
+        Button exitButton = new Button(this);
+        exitButton.setText("ESCI");
+        exitButton.setTag(false);
+        exitButton.setOnClickListener(this);
+        layout.addView(exitButton);
     }
 
     @Override
     public void onClick(View view) {
-        Media clickedMedia = (Media)view.getTag();
-        Toast.makeText(this, clickedMedia.getUrl(), Toast.LENGTH_LONG).show();
+        if (view.getTag().equals(false)) finish();
+        else {
+            Media clickedMedia = (Media)view.getTag();
+
+            Intent intent = new Intent(this, ShowMedia.class);
+            intent.putExtra("url", clickedMedia.getUrl());
+            startActivity(intent);
+        }
     }
 }

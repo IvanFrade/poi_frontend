@@ -74,7 +74,6 @@ public class MainActivity extends AppCompatActivity implements iListener {
         intent.putExtra("poi", poi);
 
         startActivity(intent);
-        finish();
     }
 
     public void onClick(View v) {
@@ -83,7 +82,7 @@ public class MainActivity extends AppCompatActivity implements iListener {
             return;
         }
 
-        POIDownloader poiDownloader = new POIDownloader("0000000000000001");
+        POIDownloader poiDownloader = new POIDownloader("0000000000000002");
         poiDownloader.setListener(this);
 
         (new Thread(poiDownloader)).start();
