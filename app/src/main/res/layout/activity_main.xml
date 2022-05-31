@@ -10,20 +10,24 @@
     <TextView
         android:id="@+id/txt_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/title" />
+        android:layout_height="168dp"
+        android:text="@string/title"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="40sp" />
 
     <Button
         android:id="@+id/btn_activate_ticket"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
         android:onClick="onActivateTicket"
         android:text="@string/activate_ticket" />
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btn_scan_nfc"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="180dp"
+        android:clickable="false"
         android:onClick="onClick"
         android:text="@string/scan_nfc" />
 
