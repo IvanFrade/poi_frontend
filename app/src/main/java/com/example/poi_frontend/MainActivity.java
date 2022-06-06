@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity implements iListener {
         intentIntegrator.initiateScan();
     }
 
+    // per eventuale scan nfc
     public void onNFCScan(View v) {
         if (this.loginResult == null || !this.loginResult.getResult()) {
             Toast.makeText(this, "Devi prima attivare un biglietto!", Toast.LENGTH_LONG).show();
@@ -48,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements iListener {
         IntentResult result = IntentIntegrator.parseActivityResult(resultCode, data);
         String ticketCode = result.getContents();
 
-        Downloader downloader = new Downloader(ticketCode);
+        Downloader downloader = new Downloader(0, ticketCode);
         downloader.setListener(this);
 
         (new Thread(downloader)).start();
@@ -84,10 +85,10 @@ public class MainActivity extends AppCompatActivity implements iListener {
             return;
         }
 
-        POIDownloader poiDownloader = new POIDownloader("0000000000000002");
-        poiDownloader.setListener(this);
+        Downloader downloader = new Downloader(1, "0000000000000002");
+        downloader.setListener(this);
 
-        (new Thread(poiDownloader)).start();
+        (new Thread(downloader)).start();
     }
 }
 

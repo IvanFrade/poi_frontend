@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">poi_frontend</string>
+    <string name="app_name">Viva l\'arte!</string>
     <string name="title">Consorzio Musei Veneto</string>
     <string name="activate_ticket">Attiva biglietto</string>
     <string name="scan_nfc">SCAN NFC</string>
